@@ -14,14 +14,14 @@ export const Room = () => {
     }
     return (
         <div className='container'>
-            <div>
+            <div className='msg-section'>
 
                 {messages.map((msg) => (
-                    <div key={msg.$id}>
-                        <div><span>{msg.$createdAt}</span></div>
+                    <div className='msg-item' key={msg.$id}>
                         <div>
                             <span>{msg.body}</span>
                         </div>
+                        <div><span id='msg-time'>{msg.$createdAt}</span></div>
                     </div>
                 ))}
 
