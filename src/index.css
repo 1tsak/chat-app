@@ -28,26 +28,58 @@ body{
 }
 
 .container{
-  max-width: 600px;
+  max-width: 800px;
+  width: 90%;
   height: 100%;
   margin: auto;
 }
 
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+/* Message Display Section */
 .msg-section{
   background-color: var(--secondaryBgColor);
-  height: 80%;
+  height: 85%;
   padding: 0.25rem;
 }
 
-.msg-item{
+.msg-item-recieved{
   background-color: var(--themeColorMain);
-  padding: 0.75rem;
+  padding: 0.5rem;
   width: fit-content;
   max-width: 50%;
   margin: 1rem;
   border-radius: 1rem;
+  clear: both;
 }
 
 #msg-time{
   font-size: 0.8rem;
+  float: right;
+  padding-top: 0.5rem;
+}
+
+/* Message Input Section */
+.msg-input-section{
+  display: flex;
+  margin: 0.5rem 0;
+  padding: 0.5rem;
+  border-radius: 0..5rem;
+  gap: 1rem;
+  align-items: center;
+  background-color: var(--secondaryBgColor);
+  height: 13%;
+}
+.msg-input{
+  height: 100%;
+  width: 90%;
+  background-color: transparent;
+  outline: none;
+  font-size: large;
+  color: var(--textColorMain);
+  border: none;
 }
