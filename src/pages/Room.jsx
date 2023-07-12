@@ -1,25 +1,34 @@
 import React, { useEffect, useState } from 'react'
-import { databases, DATABASE_ID, COLLECTION_ID_MESSAGES } from '../appWriteConfig'
+import { AiOutlineSend } from "react-icons/ai"
+import { getMessages, createMessage } from '../functions';
 import moment from "moment"
 import "moment-timezone"
-import { AiOutlineSend } from "react-icons/ai"
 
 export const Room = () => {
 
     const [messages, setMessages] = useState([]);
+    const [inputMessage, setInputMessage] = useState();
 
-    // useEffect(() => { getMessages() }, [])
+    useEffect(() => { fetchMessages() }, [])
 
-    const getMessages = async () => {
-        const response = await databases.listDocuments(DATABASE_ID, COLLECTION_ID_MESSAGES)
-        console.log(response);
-        setMessages(response.documents.map(msg => {
+    const fetchMessages = async () => {
+        const messages = await getMessages();
+        setMessages(messages.map(msg => {
             const ot = moment(msg.$createdAt);
             msg.time = ot.tz('Asia/Kolkata').format('HH:mm');
-
             return msg;
         }));
     }
+    const handleSubmit = async () => {
+        let payload = {
+            body: inputMessage
+        }
+        await createMessage(payload);
+        setInputMessage("");
+        fetchMessages();
+
+    }
+
     return (
         <div className='container'>
             <div className='msg-section'>
@@ -30,16 +39,14 @@ export const Room = () => {
                             <span>{msg.body}</span>
                         </div>
                         <div><span id='msg-time'>
-                            {
-                                msg.time
-                            }
+                            {msg.time}
                         </span></div>
                     </div>
                 ))}
 
             </div>
             <div className="msg-input-section">
-                <input placeholder='Enter your message...' m className='msg-input' type="text" />
+                <textarea onKeyDown={(e) => { if (e.key === 'Enter') handleSubmit() }} value={inputMessage} onChange={(e) => setInputMessage(e.target.value)} placeholder='Enter your message...' maxLength={"1000"} className='msg-input' type="text" />
                 <div className='send-btn'>
                     <AiOutlineSend size={30} />
                 </div>
