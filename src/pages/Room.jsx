@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { AiOutlineSend } from "react-icons/ai"
-import { getMessages, createMessage } from '../functions';
+import { getMessages, createMessage, deleteMessage } from '../functions';
 import moment from "moment"
 import "moment-timezone"
 import { MessageItem } from '../components/MessageItem';
@@ -11,6 +11,17 @@ export const Room = () => {
     const [inputMessage, setInputMessage] = useState();
 
     useEffect(() => { fetchMessages() }, [])
+    const handleDelete = async (id) => {
+        deleteMessage(id);
+        setMessages((prevMessages) => prevMessages.filter(msg => msg.$id != id));
+    }
+    const handleAction = (action, id) => {
+        switch (action) {
+            case "delete":
+                handleDelete(id)
+                break;
+        }
+    }
 
     const fetchMessages = async () => {
         const messages = await getMessages();
@@ -34,7 +45,7 @@ export const Room = () => {
         <div className='container'>
             <div className='msg-section'>
                 {messages.map((msg) => (
-                    <MessageItem msg={msg} />
+                    <MessageItem id={msg.$id} msg={msg} onAction={handleAction} />
                 ))}
             </div>
             <div className="msg-input-section">

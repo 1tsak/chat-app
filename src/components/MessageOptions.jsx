@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const MessageOptions = () => {
+export const MessageOptions = ({ id, elref, onAction }) => {
     const bodyStyle = {
         position: "absolute",
         borderRadius: "0.25rem",
@@ -19,9 +19,9 @@ export const MessageOptions = () => {
         cursor: "pointer"
     }
     return (
-        <div style={bodyStyle}>
+        <div ref={elref} style={bodyStyle}>
             <ul style={listStyle}>
-                <li style={listItemStyle}>Delete</li>
+                <li onClick={() => { onAction("delete", id) }} style={listItemStyle}>Delete</li>
             </ul>
         </div >
     )

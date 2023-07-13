@@ -16,3 +16,11 @@ export const createMessage = async (payload) => {
     }
 
 }
+export const deleteMessage = async (id) => {
+    try {
+        const response = await databases.deleteDocument(DATABASE_ID, COLLECTION_ID_MESSAGES, id);
+    } catch (e) {
+        console.log(e);
+    }
+
+}
