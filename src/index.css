@@ -8,6 +8,13 @@
   --themeColorMain:rgba(219,26,90,1);
   --themeColroSecondary:#386fd2;
 }
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
 
 *{
   margin: 0;
@@ -44,17 +51,30 @@ body{
 .msg-section{
   background-color: var(--secondaryBgColor);
   height: 85%;
+  overflow-y: scroll;
   padding: 0.25rem;
 }
 
-.msg-item-recieved{
+.msg-item{
   background-color: var(--themeColorMain);
+  position: relative;
   padding: 0.5rem;
   width: fit-content;
+  min-width: 5rem;
   max-width: 50%;
+  font-size: rem;
   margin: 1rem;
   border-radius: 1rem;
   clear: both;
+}
+.msg-content{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+#msg-otpions{
+  margin-left: 1rem;
 }
 
 #msg-time{

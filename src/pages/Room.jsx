@@ -3,6 +3,7 @@ import { AiOutlineSend } from "react-icons/ai"
 import { getMessages, createMessage } from '../functions';
 import moment from "moment"
 import "moment-timezone"
+import { MessageItem } from '../components/MessageItem';
 
 export const Room = () => {
 
@@ -32,18 +33,9 @@ export const Room = () => {
     return (
         <div className='container'>
             <div className='msg-section'>
-
                 {messages.map((msg) => (
-                    <div className='msg-item-recieved clearfix' key={msg.$id}>
-                        <div>
-                            <span>{msg.body}</span>
-                        </div>
-                        <div><span id='msg-time'>
-                            {msg.time}
-                        </span></div>
-                    </div>
+                    <MessageItem msg={msg} />
                 ))}
-
             </div>
             <div className="msg-input-section">
                 <textarea onKeyDown={(e) => { if (e.key === 'Enter') handleSubmit() }} value={inputMessage} onChange={(e) => setInputMessage(e.target.value)} placeholder='Enter your message...' maxLength={"1000"} className='msg-input' type="text" />
