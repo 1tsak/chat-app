@@ -5,7 +5,7 @@
   --borderColor1: rgba(79,86,105,1);
   --textColorMain:#fff;
   --textColorSecondary:rgb(226,227,232);
-  --themeColorMain:rgba(219,26,90,1);
+  --themeColorMain:rgb(96, 125, 139);
   --themeColroSecondary:#386fd2;
 }
 ::-webkit-scrollbar {
@@ -62,7 +62,6 @@ body{
   width: fit-content;
   min-width: 5rem;
   max-width: 50%;
-  font-size: rem;
   margin: 1rem;
   border-radius: 1rem;
   clear: both;
@@ -71,10 +70,11 @@ body{
   display: flex;
   align-items: center;
   justify-content: space-between;
+  word-break: break-all;
   cursor: pointer;
 }
-#msg-otpions{
-  margin-left: 1rem;
+#msg-options{
+  margin-left: 0.25rem;
 }
 
 #msg-time{
