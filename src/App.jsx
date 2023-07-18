@@ -4,16 +4,19 @@ import './App.css'
 import { Room } from './pages/Room'
 import { Login } from './pages/Login'
 import { Protected } from './components/Protected'
+import { AuthProvider } from './utils/AuthContext'
 
 function App() {
   return (
     <Router>
-      <Routes>
-        <Route path='/login' element={<Login />} />
-        <Route element={<Protected />}>
-          <Route path='/' element={<Room />} />
-        </Route>
-      </Routes>
+      <AuthProvider>
+        <Routes>
+          <Route path='/login' element={<Login />} />
+          <Route element={<Protected />}>
+            <Route path='/' element={<Room />} />
+          </Route>
+        </Routes>
+      </AuthProvider>
     </Router>
   )
 }
