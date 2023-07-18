@@ -4,16 +4,32 @@ import { getMessages, createMessage, deleteMessage } from '../functions';
 import moment from "moment"
 import "moment-timezone"
 import { MessageItem } from '../components/MessageItem';
+import client, { COLLECTION_ID_MESSAGES, DATABASE_ID, } from '../appWriteConfig';
 
 export const Room = () => {
 
     const [messages, setMessages] = useState([]);
     const [inputMessage, setInputMessage] = useState();
 
-    useEffect(() => { fetchMessages() }, [])
+    useEffect(() => {
+        fetchMessages()
+        const unsubscribe = client.subscribe(`databases.${DATABASE_ID}.collections.${COLLECTION_ID_MESSAGES}.documents`, response => {
+            if (response.events.includes("databases.*.collections.*.documents.*.create")) {
+                console.log("A MESSAGE WAS CREATED");
+                setMessages((prevState) => [...prevState, response.payload])
+            }
+            if (response.events.includes("databases.*.collections.*.documents.*.delete")) {
+                console.log("A MESSAGE WAS DELETED");
+                setMessages((prevMessages) => prevMessages.filter(msg => msg.$id != response.payload.$id));
+
+            }
+        });
+        return () => {
+            unsubscribe();
+        }
+    }, [])
     const handleDelete = async (id) => {
         deleteMessage(id);
-        setMessages((prevMessages) => prevMessages.filter(msg => msg.$id != id));
     }
     const handleAction = (action, id) => {
         switch (action) {
@@ -37,7 +53,6 @@ export const Room = () => {
         }
         await createMessage(payload);
         setInputMessage("");
-        fetchMessages();
 
     }
 
