@@ -103,3 +103,52 @@ body{
   color: var(--textColorMain);
   border: none;
 }
+.logo-container{
+  height: 100%;
+  width: 65%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.login-container{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  width: 100%;
+}
+.form-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--secondaryBgColor);
+  height: 100%;
+  width: 45%;
+  border-top-left-radius: 2rem;
+  border-bottom-left-radius: 2rem;
+}
+.field-wrapper{
+  margin-bottom: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+.field-wrapper input {
+  padding: 0.75rem 1rem;
+  border: none;
+  font-size: 1rem;
+  outline: none;
+  border-radius:0.25rem;
+  width: 25rem;
+  color:rgba(40,41,57,1);
+}
+input[type=submit] {
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  background-color: var(--themeColorMain);
+  border: none;
+  color: white;
+  font-size: 1rem;
+  border-radius: 1.5rem;
+  cursor: pointer;
+}
