@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useAuth } from '../utils/AuthContext'
 import { useNavigate } from 'react-router-dom';
 import icon from "../assets/icon.png"
@@ -14,7 +14,7 @@ export const Login = () => {
     }, [])
     const handleInputChange = (e) => {
         let name = e.target.name
-        let value = e.target.name
+        let value = e.target.value
         setCredentials({ ...credentials, [name]: value });
     }
     return (
@@ -30,19 +30,19 @@ export const Login = () => {
                             name='email'
                             type='email'
                             placeholder='Enter your email...'
-                            value={credentials.password}
+                            value={credentials.email}
                             onChange={handleInputChange} />
                     </div>
                     <div className='field-wrapper'>
-                        <label htmlFor="email">Password</label>
+                        <label htmlFor="password">Password</label>
                         <input
                             name='password'
                             type='password'
                             placeholder='Enter your password...'
-                            value={credentials.email}
+                            value={credentials.password}
                             onChange={handleInputChange} />
                     </div>
-                    <input type="submit" />
+                    <input type="submit" value="Login" />
                 </form>
             </div>
         </div>
