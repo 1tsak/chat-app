@@ -1,8 +1,15 @@
 import { databases, DATABASE_ID, COLLECTION_ID_MESSAGES } from './appWriteConfig'
-import { ID } from "appwrite"
+import { ID, Query } from "appwrite"
 export const getMessages = async () => {
     try {
-        const response = await databases.listDocuments(DATABASE_ID, COLLECTION_ID_MESSAGES)
+        const response = await databases.listDocuments(
+            DATABASE_ID,
+            COLLECTION_ID_MESSAGES,
+            [
+                Query.orderAsc('$createdAt'),
+                Query.limit(100),
+            ]
+        )
         return response.documents;
     } catch (e) {
         console.log(e);

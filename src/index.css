@@ -1,3 +1,8 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root{
   --mainBgColor:rgba(20,20,31,11);
   --secondaryBgColor:rgba(27,27,39,1);
@@ -35,9 +40,9 @@ body{
 }
 
 .container{
-  max-width: 800px;
-  width: 90%;
   height: 100%;
+  display: flex;
+  flex-direction: column;
   margin: auto;
 }
 
@@ -50,7 +55,6 @@ body{
 /* Message Display Section */
 .msg-section{
   background-color: var(--secondaryBgColor);
-  height: 85%;
   overflow-y: scroll;
   padding: 0.25rem;
 }
@@ -65,6 +69,13 @@ body{
   margin: 1rem;
   border-radius: 1rem;
   clear: both;
+}
+.msg-sent{
+  float: right;
+  background-color: #a96a18;
+}
+.msg-recieved{
+  float: right;
 }
 .msg-content{
   display: flex;
@@ -85,6 +96,7 @@ body{
 
 /* Message Input Section */
 .msg-input-section{
+  height: 100px;
   display: flex;
   margin: 0.5rem 0;
   padding: 0.5rem;
@@ -92,7 +104,7 @@ body{
   gap: 1rem;
   align-items: center;
   background-color: var(--secondaryBgColor);
-  height: 13%;
+  /* height: 12%; */
 }
 .msg-input{
   height: 100%;
@@ -119,11 +131,13 @@ body{
 }
 .form-container{
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   background-color: var(--secondaryBgColor);
   height: 100%;
   width: 45%;
+  padding: 10px;
   border-top-left-radius: 2rem;
   border-bottom-left-radius: 2rem;
 }
@@ -151,4 +165,12 @@ input[type=submit] {
   font-size: 1rem;
   border-radius: 1.5rem;
   cursor: pointer;
+}
+
+.register-text{
+  margin-top: 1rem;
+}
+
+.register-text a{
+  color: yellow;
 }

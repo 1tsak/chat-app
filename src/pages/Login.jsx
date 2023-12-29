@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { useAuth } from '../utils/AuthContext'
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom'
 import icon from "../assets/icon.png"
 export const Login = () => {
-    const { user } = useAuth();
+    const { user, handleUserLogin } = useAuth();
     const navigate = useNavigate();
     const [credentials, setCredentials] = useState({
         email: "",
@@ -23,7 +24,8 @@ export const Login = () => {
                 <img src={icon} alt="" />
             </div>
             <div className='form-container'>
-                <form action="">
+            <p>Login to continue...</p>
+                <form  onSubmit={(e) => {handleUserLogin(e, credentials)}}>
                     <div className='field-wrapper'>
                         <label htmlFor="email">Email</label>
                         <input
@@ -31,7 +33,7 @@ export const Login = () => {
                             type='email'
                             placeholder='Enter your email...'
                             value={credentials.email}
-                            onChange={handleInputChange} />
+                            onChange={(e) => {handleInputChange(e)}} />
                     </div>
                     <div className='field-wrapper'>
                         <label htmlFor="password">Password</label>
@@ -40,10 +42,11 @@ export const Login = () => {
                             type='password'
                             placeholder='Enter your password...'
                             value={credentials.password}
-                            onChange={handleInputChange} />
+                            onChange={(e) => {handleInputChange(e)}} />
                     </div>
                     <input type="submit" value="Login" />
                 </form>
+                <p className='register-text'>Dont have an account? Register <Link to="/register">here</Link></p>
             </div>
         </div>
     )
