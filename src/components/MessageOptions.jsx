@@ -4,7 +4,7 @@ export const MessageOptions = ({ id, elref, onAction }) => {
     const bodyStyle = {
         position: "absolute",
         borderRadius: "0.25rem",
-        zIndex: "2",
+        zIndex: "100",
         boxShadow: "0 2px 4px rgba(0, 0, 0, 0.2)",
         top: "20%",
         left: "95%",
