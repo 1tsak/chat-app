@@ -29,7 +29,7 @@ export const MessageItem = ({ msg, onAction }) => {
     };
   }, []);
   return (
-    <div className="m-3">
+    <div className="m-3 clearfix">
       <div className={msgType==='sent'?'float-right':''}>
         <p className="ml-2 text-sm">
           {msg?.username ? <span> {msg?.username}</span> : "Anonymous user"}

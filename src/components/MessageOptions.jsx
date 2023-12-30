@@ -7,7 +7,7 @@ export const MessageOptions = ({ id, elref, onAction }) => {
         zIndex: "100",
         boxShadow: "0 2px 4px rgba(0, 0, 0, 0.2)",
         top: "20%",
-        left: "95%",
+        left: "50%",
         backgroundColor: "rgba(20, 20, 31, 11)"
     }
     const listStyle = {
