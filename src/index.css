@@ -77,7 +77,7 @@ body{
   background-color: #a96a18;
 }
 .msg-recieved{
-  float: right;
+  float: left;
 }
 .msg-content{
   display: flex;

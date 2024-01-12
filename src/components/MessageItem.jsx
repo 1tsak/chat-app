@@ -6,7 +6,7 @@ import { useAuth } from "../utils/AuthContext";
 export const MessageItem = ({ msg, onAction }) => {
   const { user } = useAuth();
   const [showModalOptions, setShowModalOptions] = useState(false);
-  const [msgType, setMsgType] = useState("");
+  const [msgType, setMsgType] = useState("recieved");
   const modalRef = useRef(null);
 
   useEffect(() => {
@@ -30,7 +30,7 @@ export const MessageItem = ({ msg, onAction }) => {
   }, []);
   return (
     <div className="m-3 clearfix">
-      <div className={msgType==='sent'?'float-right':''}>
+      <div className={msgType==='sent'?'float-right':'float-left'}>
         <p className="ml-2 text-sm">
           {msg?.username ? <span> {msg?.username}</span> : "Anonymous user"}
 
