@@ -1,8 +1,7 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import { useAuth } from "../utils/AuthContext";
 import { Link } from "react-router-dom";
-import icon from "../assets/icon.png"
+import icon from "../assets/icon.png";
 
 export const Register = () => {
   const [credentials, setCredentials] = useState({
@@ -12,6 +11,9 @@ export const Register = () => {
     password2: "",
   });
 
+  const [passwordError, setPasswordError] = useState("");
+  const [formError, setFormError] = useState("");
+
   const { handleRegister } = useAuth();
 
   const handleInputChange = (e) => {
@@ -19,7 +21,32 @@ export const Register = () => {
     let value = e.target.value;
 
     setCredentials({ ...credentials, [name]: value });
-    // console.log('CREDS:', credentials)
+
+    if (name === "password1" || name === "password2") {
+      setPasswordError("");
+    }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (credentials.password1.length < 8) {
+      setPasswordError("Password should be at least 8 characters long");
+      return;
+    }
+
+    if (credentials.password1 !== credentials.password2) {
+      setPasswordError("Passwords do not match");
+      return;
+    }
+
+    // Additional form validation logic can be added here
+
+    // Clear any previous form errors
+    setFormError("");
+
+    // Call the handleRegister function if all validations pass
+    handleRegister(e, credentials);
   };
 
   return (
@@ -29,7 +56,7 @@ export const Register = () => {
       </div>
       <div className="form-container">
         <p>Register</p>
-        <form onSubmit={(e) => {handleRegister(e, credentials)}}>
+        <form onSubmit={handleSubmit}>
           <div className="field-wrapper">
             <label htmlFor="name">Name</label>
             <input
@@ -57,23 +84,23 @@ export const Register = () => {
               type="password"
               placeholder="Enter your password..."
               value={credentials.password1}
-              onChange={(e) => {
-                handleInputChange(e);
-              }}
+              onChange={handleInputChange}
             />
           </div>
           <div className="field-wrapper">
-            <label htmlFor="password">Password</label>
+            <label htmlFor="password">Confirm Password</label>
             <input
               type="password"
               name="password2"
-              placeholder="Comfirm your password..."
+              placeholder="Confirm your password..."
               value={credentials.password2}
-              onChange={(e) => {
-                handleInputChange(e);
-              }}
+              onChange={handleInputChange}
             />
           </div>
+          {passwordError && (
+            <div className="error-message text-red-400">{passwordError}</div>
+          )}
+          {formError && <div className="error-message">{formError}</div>}
           <input type="submit" value="Register" />
         </form>
         <p className="register-text">
@@ -83,4 +110,3 @@ export const Register = () => {
     </div>
   );
 };
-
