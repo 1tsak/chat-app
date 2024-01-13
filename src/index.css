@@ -177,3 +177,7 @@ input[type=submit] {
 .register-text a{
   color: yellow;
 }
+
+.video_container{
+  background-color: var(--secondaryBgColor);
+}

@@ -6,6 +6,7 @@ import { Login } from './pages/Login'
 import { Register } from './pages/Register'
 import { Protected } from './components/Protected'
 import { AuthProvider } from './utils/AuthContext'
+import { Video } from './pages/Video'
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path='/register' element={<Register />} />
           <Route element={<Protected />}>
             <Route path='/' element={<Room />} />
+            <Route path='/video' element={<Video />} />
           </Route>
         </Routes>
       </AuthProvider>

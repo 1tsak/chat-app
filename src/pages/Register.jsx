@@ -74,7 +74,7 @@ export const Register = () => {
               }}
             />
           </div>
-          <input type="submit" value="Login" />
+          <input type="submit" value="Register" />
         </form>
         <p className="register-text">
           Already have an account? <Link to="/login">here</Link>
