@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import './App.css'
 import { Room } from './pages/Room'
@@ -7,6 +6,8 @@ import { Register } from './pages/Register'
 import { Protected } from './components/Protected'
 import { AuthProvider } from './utils/AuthContext'
 import { Video } from './pages/Video'
+import { VideoSpace } from './pages/VideoSpace'
+
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route element={<Protected />}>
             <Route path='/' element={<Room />} />
             <Route path='/video' element={<Video />} />
+            <Route path='/room/:roomName' element={<VideoSpace />} />
           </Route>
         </Routes>
       </AuthProvider>
