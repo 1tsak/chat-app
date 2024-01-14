@@ -2,19 +2,7 @@ import React, { useEffect, useState } from "react";
 import { SideBar } from "../components/SideBar";
 import Header from "../components/Header";
 import "@livekit/components-styles";
-import {
-  ControlBar,
-  GridLayout,
-  LiveKitRoom,
-  ParticipantTile,
-  RoomAudioRenderer,
-  VideoConference,
-  useTracks,
-} from "@livekit/components-react";
 import { BsPersonVideo } from "react-icons/bs";
-import { Track } from "livekit-client";
-import videoChat from "../assets/video-chat-fill.svg";
-import axios from "axios";
 const serverUrl = "wss://aakash-596mg2rt.livekit.cloud";
 import { generateRoomId } from "../functions";
 import { useNavigate } from "react-router-dom";
