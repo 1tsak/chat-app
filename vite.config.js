@@ -5,7 +5,7 @@ export default defineConfig(({ command, mode }) => {
     const env = loadEnv(mode, process.cwd(), '');
     return {
         define: {
-            'process.env': env
+            'process.env.NODE_ENV': JSON.stringify(env.NODE_ENV)
         },
         plugins: [react()],
     };
