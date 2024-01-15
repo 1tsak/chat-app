@@ -1,4 +1,4 @@
-import { databases, DATABASE_ID, COLLECTION_ID_MESSAGES } from './appWriteConfig'
+import { databases, DATABASE_ID, COLLECTION_ID_MESSAGES } from './appWriteConfig.js'
 import { ID, Query } from "appwrite"
 export const getMessages = async () => {
     try {
